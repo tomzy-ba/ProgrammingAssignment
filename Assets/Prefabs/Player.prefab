@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3073309680329837117}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.08142482, y: 0.41757974, z: -0.17320323, w: 0.88825554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8315448642298554386}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 50.358, z: -22.068}
 --- !u!1 &4725247750318310473
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 2749525381793456665}
+  playerUIGO: {fileID: 0}
   moveSpeed: 5
   sensitivity: 500
 --- !u!114 &604035159113442285
@@ -199,5 +200,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b52b2cac1174b647bfe6eeb1aae6933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 2000
-  hp: 2000
+  maxHp: 100
+  hp: 100

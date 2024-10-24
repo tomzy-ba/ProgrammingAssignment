@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded;
     private int jumpTicks;
 
-    public float sensitivity = 20000f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -58,23 +58,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log( "Collision tag" + collision.gameObject.tag);
+        Debug.Log("Collision name" + collision.gameObject.name);
         if(collision.gameObject.name == "Ground" || collision.gameObject)
         {
             Debug.Log("Grounded");
             grounded = true;
             jumpTicks = 0;
         }
-        //if (collision.gameObject.name == "Lava")
-        //{
-        //    Debug.Log("LAVA");
-        //    player.TakeDamage(10);
-        //}
+        if (collision.gameObject.name == "Lava")
+        {
+            Debug.Log("LAVA");
+            player.TakeDamage(100);
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Debug.Log("Took a bullet");
+            player.TakeDamage(10);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.name == "EndCylinder")
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    Debug.Log("Not grounded");
-    //    grounded = false;
-    //}
-
 
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class PlayerUI : MonoBehaviour
     public Slider hpSlider;
     public Text hpText;
     public GameObject playerPrefab;
+    public GameObject bloodSplatter;
 
     private void Start()
     {
@@ -15,9 +17,19 @@ public class PlayerUI : MonoBehaviour
     }
     public void UpdateUI(Player player)
     {
+        if (hpSlider.value > player.hp)
+        {
+            StartCoroutine(TakeDamageUI());
+        }
         hpSlider.maxValue = player.maxHp;
         hpSlider.value = player.hp;
         hpText.text = $"HP {player.hp}/{player.maxHp}";
     }
 
+    private IEnumerator TakeDamageUI()
+    {
+        bloodSplatter.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        bloodSplatter.SetActive(false);
+    }
 }

@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        SceneManager.LoadScene("SampleScene");
+        Debug.Log("PLAYER DEAD");
+        SceneManager.LoadScene("MainMenu");
     }
 }

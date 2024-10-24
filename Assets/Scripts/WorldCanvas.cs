@@ -15,9 +15,9 @@ public class WorldCanvas : MonoBehaviour
         
     }
 
-    public void OnRestartButton()
+    public void OnMenuButton()
     {
         Debug.Log("Restart button pressed");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainMenu");
     }
 }
