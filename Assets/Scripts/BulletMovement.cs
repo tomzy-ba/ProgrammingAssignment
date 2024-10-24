@@ -6,10 +6,12 @@ public class BulletMovement : MonoBehaviour
     Rigidbody rb;
     MeshRenderer mr;
 
-    private int bulletSpeed = 16;
+    private int bulletSpeed = 22;
+    private Vector3 targetPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        targetPosition = target.position + new Vector3(Random.Range(15f, -15f), 0, 0);
         rb = GetComponent<Rigidbody>();
         mr = GetComponent<MeshRenderer>();
         Vector3 targetDirection = target.position - transform.position;
@@ -23,7 +25,6 @@ public class BulletMovement : MonoBehaviour
     {
         if (target == null)
             return;
-        Vector3 targetPosition = target.position;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, bulletSpeed * Time.deltaTime);
     }
     private void FixedUpdate()

@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     
     public float moveSpeed = 20;
+    public float gameTimer;
 
     private bool isJumpPressed;
     private bool grounded;
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameTimer += Time.deltaTime;
         isJumpPressed = Input.GetButton("Jump");
         playerUI.UpdateUI(player);
     }
@@ -51,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
             Debug.Log("JUMP");
-            rb.linearVelocity = new Vector3(0, 25, 0);
+            rb.linearVelocity = new Vector3(horizontal, 25, vertical);
             jumpTicks += 1;
         }
     }
@@ -69,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.name == "Lava")
         {
             Debug.Log("LAVA");
-            player.TakeDamage(100);
+            player.TakeDamage(1000);
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
@@ -77,8 +79,15 @@ public class PlayerMovement : MonoBehaviour
             player.TakeDamage(10);
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.name == "EndCylinder")
+        if (collision.gameObject.name == "EndCylinder1")
         {
+            // end level 1
+            PlayerPrefs.SetFloat("Level1Time", gameTimer);
+            SceneManager.LoadScene("MainMenu");
+        }
+        if (collision.gameObject.name == "EndCylinder2")
+        {
+            PlayerPrefs.SetFloat("Level2Time", gameTimer);
             SceneManager.LoadScene("MainMenu");
         }
     }

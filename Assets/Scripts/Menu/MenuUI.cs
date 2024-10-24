@@ -7,6 +7,12 @@ using UnityEngine.UI;
 public class MenuUI : MonoBehaviour
 {
     public Slider sensSlider;
+    public InputField nameInput;
+
+    public Text level1Time;
+    public Text level2Time;
+    public Text level3Time;
+    public Text level4Time;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,10 +51,17 @@ public class MenuUI : MonoBehaviour
     {
         int sens = Convert.ToInt32(sensSlider.value);
         PlayerPrefs.SetInt("Sensitivity", sens);
+        string playerName = nameInput.text;
+        PlayerPrefs.SetString("PlayerName", playerName);
     }
 
     void LoadSettings()
     {
         sensSlider.value = PlayerPrefs.GetInt("Sensitivity", 0);
+        nameInput.text = PlayerPrefs.GetString("PlayerName", "");
+
+        level1Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level1Time");
+        level2Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level2Time");
+        level2Time.text = PlayerPrefs.GetString("PlayerName", "not completed" + " " + PlayerPrefs.GetFloat("Level3Time"));
     }
 }
