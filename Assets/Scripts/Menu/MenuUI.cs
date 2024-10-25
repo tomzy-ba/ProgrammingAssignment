@@ -61,7 +61,7 @@ public class MenuUI : MonoBehaviour
         sensSlider.value = PlayerPrefs.GetFloat("Sensitivity", 0);
         nameInput.text = PlayerPrefs.GetString("PlayerName", "");
 
-        // gets the playerprefs player name value and level 1 time value and concats them, then assigns to level1timetext
+        // gets the playerprefs player name value and level 1 time value and combines them into a string, then assigns to level1timetext
         level1Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level1Time");
         level2Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level2Time");
         level3Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level3Time");

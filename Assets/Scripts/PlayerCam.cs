@@ -27,6 +27,7 @@ public class PlayerCam : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
+        // Vector3.up is for the slight offset
         transform.position = orientation.position + Vector3.up;
     }
 }

@@ -3,7 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
     private int maxHp;
+    [SerializeField]
     private int hp;
     private int speed;
 
@@ -15,6 +17,11 @@ public class Player : MonoBehaviour
     public int GetHp()
     {
         return hp;
+    }
+
+    public void SetHp(int newHp)
+    {
+        hp = newHp;
     }
 
     public bool TakeDamage(int damage)
