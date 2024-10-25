@@ -49,19 +49,22 @@ public class MenuUI : MonoBehaviour
 
     void SaveSettings()
     {
-        int sens = Convert.ToInt32(sensSlider.value);
-        PlayerPrefs.SetInt("Sensitivity", sens);
+        // converts the sensitivity
+        PlayerPrefs.SetFloat("Sensitivity", sensSlider.value);
         string playerName = nameInput.text;
         PlayerPrefs.SetString("PlayerName", playerName);
     }
 
     void LoadSettings()
     {
-        sensSlider.value = PlayerPrefs.GetInt("Sensitivity", 0);
+        // gets playerprefs sensitivity value and assigns it to the slider
+        sensSlider.value = PlayerPrefs.GetFloat("Sensitivity", 0);
         nameInput.text = PlayerPrefs.GetString("PlayerName", "");
 
+        // gets the playerprefs player name value and level 1 time value and concats them, then assigns to level1timetext
         level1Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level1Time");
         level2Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level2Time");
-        level2Time.text = PlayerPrefs.GetString("PlayerName", "not completed" + " " + PlayerPrefs.GetFloat("Level3Time"));
+        level3Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level3Time");
+
     }
 }

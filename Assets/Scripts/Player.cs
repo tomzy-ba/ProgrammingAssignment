@@ -3,8 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public int maxHp;
-    public int hp;
+    private int maxHp;
+    private int hp;
+    private int speed;
+
+
+    public int GetMaxHp()
+    {
+        return maxHp;
+    }
+    public int GetHp()
+    {
+        return hp;
+    }
 
     public bool TakeDamage(int damage)
     {
@@ -23,5 +34,15 @@ public class Player : MonoBehaviour
     {
         Debug.Log("PLAYER DEAD");
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Heal(int health)
+    {
+        Debug.Log("Player heals for " + health + "health");
+        hp += health;
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+        }
     }
 }

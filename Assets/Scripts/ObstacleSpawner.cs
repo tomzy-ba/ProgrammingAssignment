@@ -7,7 +7,7 @@ public class ObstacleSpawner : MonoBehaviour
     public float startTime;
     public Transform target;
 
-    private float spawnRate = .75f;
+    private float spawnRate = .6f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +16,7 @@ public class ObstacleSpawner : MonoBehaviour
     }
     IEnumerator SpawnObstacle()
     {
-        // this will constantly loop the coroutine, then start a new one that deletes the obstacles after a certain amount of time
+        // this will constantly loop the coroutine
         while (true)
         {
             yield return new WaitForSeconds(spawnRate);
@@ -24,12 +24,12 @@ public class ObstacleSpawner : MonoBehaviour
             GameObject obstacle = Instantiate(bulletPrefab, transform);
             BulletMovement bulletMovement = obstacle.GetComponent<BulletMovement>();
             bulletMovement.target = target;
-            StartCoroutine(DeleteObstacle(obstacle));
+            //StartCoroutine(DeleteObstacle(obstacle));
         }
     }
-    IEnumerator DeleteObstacle(GameObject obstacle)
-    {
-        yield return new WaitForSeconds(10f);
-        Destroy(obstacle);
-    }
+    //IEnumerator DeleteObstacle(GameObject obstacle)
+    //{
+    //    yield return new WaitForSeconds(10f);
+    //    Destroy(obstacle);
+    //}
 }

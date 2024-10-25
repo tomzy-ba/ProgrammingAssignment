@@ -26,6 +26,11 @@ public class BulletMovement : MonoBehaviour
         if (target == null)
             return;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, bulletSpeed * Time.deltaTime);
+        float dist = Vector3.Distance(transform.position, targetPosition);
+        if (dist < 0.1)
+        {
+            Destroy(gameObject);
+        }
     }
     private void FixedUpdate()
     {

@@ -17,13 +17,13 @@ public class PlayerUI : MonoBehaviour
     }
     public void UpdateUI(Player player)
     {
-        if (hpSlider.value > player.hp)
+        if (hpSlider.value > player.GetHp())
         {
             StartCoroutine(TakeDamageUI());
         }
-        hpSlider.maxValue = player.maxHp;
-        hpSlider.value = player.hp;
-        hpText.text = $"HP {player.hp}/{player.maxHp}";
+        hpSlider.maxValue = player.GetMaxHp();
+        hpSlider.value = player.GetHp();
+        hpText.text = $"HP {player.GetHp()}/{player.GetMaxHp()}";
     }
 
     private IEnumerator TakeDamageUI()

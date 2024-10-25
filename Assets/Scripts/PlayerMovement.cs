@@ -62,32 +62,37 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log( "Collision tag" + collision.gameObject.tag);
         Debug.Log("Collision name" + collision.gameObject.name);
-        if(collision.gameObject.name == "Ground" || collision.gameObject)
+        if(collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Grounded");
             grounded = true;
             jumpTicks = 0;
         }
-        if (collision.gameObject.name == "Lava")
+        else if (collision.gameObject.name == "Lava")
         {
             Debug.Log("LAVA");
             player.TakeDamage(1000);
         }
-        if (collision.gameObject.CompareTag("Bullet"))
+        else if (collision.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("Took a bullet");
             player.TakeDamage(10);
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.name == "EndCylinder1")
+        else if (collision.gameObject.name == "EndCylinder1")
         {
             // end level 1
             PlayerPrefs.SetFloat("Level1Time", gameTimer);
             SceneManager.LoadScene("MainMenu");
         }
-        if (collision.gameObject.name == "EndCylinder2")
+        else if (collision.gameObject.name == "EndCylinder2")
         {
             PlayerPrefs.SetFloat("Level2Time", gameTimer);
+            SceneManager.LoadScene("MainMenu");
+        }
+        else if (collision.gameObject.name == "EndCylinder3")
+        {
+            PlayerPrefs.SetFloat("Level3Time", gameTimer);
             SceneManager.LoadScene("MainMenu");
         }
     }

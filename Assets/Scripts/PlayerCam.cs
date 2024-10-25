@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    int sensitivity;
+    float sensitivity;
     public Transform orientation;
 
     float xRotation;
@@ -11,7 +11,7 @@ public class PlayerCam : MonoBehaviour
     void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
-        sensitivity = PlayerPrefs.GetInt("Sensitivity", 0);
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", 0);
     }
 
     // Update is called once per frame
