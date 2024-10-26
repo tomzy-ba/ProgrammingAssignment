@@ -3,14 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    private string playerName;
     [SerializeField]
     private int maxHp;
     [SerializeField]
     private int hp;
     [SerializeField]
     private float moveSpeed;
+    [SerializeField]
+    private float jumpForce;
 
 
+    public void SetName(string name)
+    {
+        playerName = name;
+    }
+    public string GetName()
+    {
+        return playerName;
+    }
     public int GetMaxHp()
     {
         return maxHp;
@@ -56,5 +67,9 @@ public class Player : MonoBehaviour
     public float GetMoveSpeed()
     {
         return moveSpeed;
+    }
+    public float GetJumpForce()
+    {
+        return jumpForce;
     }
 }

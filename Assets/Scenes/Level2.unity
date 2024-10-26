@@ -171,6 +171,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.6
 --- !u!1 &182805663
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +772,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.6
 --- !u!1 &323448026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1435,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.6
 --- !u!1 &794307785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +1930,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.6
 --- !u!1 &1146142624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,6 +1978,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.2
 --- !u!1001 &1225621537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,6 +2245,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.6
 --- !u!1 &1330103329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,6 +2293,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.6
 --- !u!1 &1339763960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,6 +2522,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.2
 --- !u!1001 &1401114251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2844,6 +2852,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.2
 --- !u!1 &1915688400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,6 +2900,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3005985408376955970, guid: b7154f4c4ea51f84c9405f7dec78b6eb, type: 3}
   startTime: 1
   target: {fileID: 2099734960}
+  spawnRate: 0.6
 --- !u!1001 &1934617529
 PrefabInstance:
   m_ObjectHideFlags: 0

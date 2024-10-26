@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ConveyorBelt : MonoBehaviour
 {
+    private float conveyorForce = 40000f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +19,6 @@ public class ConveyorBelt : MonoBehaviour
     {
         Debug.Log("on conveyor");
         Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 20000);
+        rb.AddForce(transform.forward * conveyorForce);
     }
 }

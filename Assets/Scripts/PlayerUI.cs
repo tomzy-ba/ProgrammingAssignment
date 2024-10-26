@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    public Text playerNameText;
     public Slider hpSlider;
     public Text hpText;
     public GameObject playerPrefab;
@@ -21,6 +22,7 @@ public class PlayerUI : MonoBehaviour
         {
             StartCoroutine(TakeDamageUI());
         }
+        playerNameText.text = player.GetName();
         hpSlider.maxValue = player.GetMaxHp();
         hpSlider.value = player.GetHp();
         hpText.text = $"HP {player.GetHp()}/{player.GetMaxHp()}";

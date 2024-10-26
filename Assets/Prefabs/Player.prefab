@@ -202,3 +202,4 @@ MonoBehaviour:
   maxHp: 100
   hp: 100
   moveSpeed: 15
+  jumpForce: 25

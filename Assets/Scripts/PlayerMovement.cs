@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Player>();
         playerUI = playerUIGO.GetComponent<PlayerUI>();
 
+        player.SetName(PlayerPrefs.GetString("PlayerName"));
         moveSpeed = player.GetMoveSpeed();
     }
 
@@ -58,7 +59,8 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
             Debug.Log("JUMP");
-            rb.linearVelocity = new Vector3(horizontal, 25, vertical);
+            rb.linearVelocity = Vector3.up * player.GetJumpForce();
+            //rb.AddForce(Vector3.up * 20000);
             jumpTicks += 1;
         }
         if (isSprinting)
@@ -95,17 +97,29 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.name == "EndCylinder1")
         {
             // end level 1
-            PlayerPrefs.SetFloat("Level1Time", gameTimer);
+            if (gameTimer < PlayerPrefs.GetFloat("Level1Time"))
+            {
+                PlayerPrefs.SetString("Level1Player", player.GetName());
+                PlayerPrefs.SetFloat("Level1Time", gameTimer);
+            }
             SceneManager.LoadScene("MainMenu");
         }
         else if (collision.gameObject.name == "EndCylinder2")
         {
-            PlayerPrefs.SetFloat("Level2Time", gameTimer);
+            if (gameTimer < PlayerPrefs.GetFloat("Level2Time"))
+            {
+                PlayerPrefs.SetString("Level2Player", player.GetName());
+                PlayerPrefs.SetFloat("Level2Time", gameTimer);
+            }
             SceneManager.LoadScene("MainMenu");
         }
         else if (collision.gameObject.name == "EndCylinder3")
         {
-            PlayerPrefs.SetFloat("Level3Time", gameTimer);
+            if (gameTimer < PlayerPrefs.GetFloat("Level3Time"))
+            {
+                PlayerPrefs.SetString("Level3Player", player.GetName());
+                PlayerPrefs.SetFloat("Level3Time", gameTimer);
+            }
             SceneManager.LoadScene("MainMenu");
         }
     }

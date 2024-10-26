@@ -62,9 +62,10 @@ public class MenuUI : MonoBehaviour
         nameInput.text = PlayerPrefs.GetString("PlayerName", "");
 
         // gets the playerprefs player name value and level 1 time value and combines them into a string, then assigns to level1timetext
-        level1Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level1Time");
-        level2Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level2Time");
-        level3Time.text = PlayerPrefs.GetString("PlayerName", "not completed") + " " + PlayerPrefs.GetFloat("Level3Time");
+        level1Time.text = PlayerPrefs.GetString("Level1Player", "not completed") + " " + PlayerPrefs.GetFloat("Level1Time");
+        level2Time.text = PlayerPrefs.GetString("Level2Player", "not completed") + " " + PlayerPrefs.GetFloat("Level2Time");
+        level3Time.text = PlayerPrefs.GetString("Level3Player", "not completed") + " " + PlayerPrefs.GetFloat("Level3Time");
+        level4Time.text = PlayerPrefs.GetString("Level4Player", "not completed") + " " + PlayerPrefs.GetFloat("Level4Time");
 
     }
 }
