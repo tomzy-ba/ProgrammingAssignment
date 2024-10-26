@@ -13,11 +13,13 @@ public class PlayerMovement : MonoBehaviour
     PlayerUI playerUI;
 
 
-    
-    public float moveSpeed = 20;
+
+    private float moveSpeed;
+    private float oldSpeed;
     public float gameTimer;
 
     private bool isJumpPressed;
+    private bool isSprinting;
     private bool grounded;
     private int jumpTicks;
 
@@ -26,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
         playerUI = playerUIGO.GetComponent<PlayerUI>();
+
+        moveSpeed = player.GetMoveSpeed();
     }
 
     // Update is called once per frame
@@ -33,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gameTimer += Time.deltaTime;
         isJumpPressed = Input.GetButton("Jump");
+        isSprinting = Input.GetKey(KeyCode.LeftShift);
         playerUI.UpdateUI(player);
     }
 
@@ -42,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector3 moveDirection = orientation.forward * vertical + orientation.right * horizontal;
-        rb.linearVelocity = moveDirection * 20;
+        rb.linearVelocity = moveDirection * moveSpeed;
 
         if(isJumpPressed && grounded)
         {
@@ -56,12 +61,20 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector3(horizontal, 25, vertical);
             jumpTicks += 1;
         }
+        if (isSprinting)
+        {
+            moveSpeed = player.GetMoveSpeed() * 1.75f;
+        }
+        else
+        {
+            moveSpeed = player.GetMoveSpeed();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log( "Collision tag" + collision.gameObject.tag);
-        Debug.Log("Collision name" + collision.gameObject.name);
+        //Debug.Log( "Collision tag" + collision.gameObject.tag);
+        //Debug.Log("Collision name" + collision.gameObject.name);
         if(collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Grounded");

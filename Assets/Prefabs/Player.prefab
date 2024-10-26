@@ -186,8 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 2749525381793456665}
   playerUIGO: {fileID: 0}
-  moveSpeed: 5
-  sensitivity: 500
+  gameTimer: 0
 --- !u!114 &604035159113442285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,3 +201,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   hp: 100
+  moveSpeed: 15

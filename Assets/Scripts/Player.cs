@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
     private int maxHp;
     [SerializeField]
     private int hp;
-    private int speed;
+    [SerializeField]
+    private float moveSpeed;
 
 
     public int GetMaxHp()
@@ -51,5 +52,9 @@ public class Player : MonoBehaviour
         {
             hp = maxHp;
         }
+    }
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
     }
 }
