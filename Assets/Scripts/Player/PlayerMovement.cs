@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         player.SetName(playerData.playerName);
         player.SetMaxHp(playerData.maxHp);
         player.SetHp(playerData.hp);
+        player.SetMoveSpeed(playerData.moveSpeed);
         playerUI = playerUIGO.GetComponent<PlayerUI>();
 
         moveSpeed = player.GetMoveSpeed();

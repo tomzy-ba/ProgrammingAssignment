@@ -14,7 +14,7 @@ public class PlayerCreation : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        LoadPlayerData();
     }
 
     public void SavePlayerData()
@@ -22,9 +22,17 @@ public class PlayerCreation : MonoBehaviour
         string playerName = nameInput.text;
         int maxHp = Convert.ToInt32(maxHpInput.text);
         int hp = Convert.ToInt32(hpInput.text);
-        PlayerData playerData = new PlayerData(playerName, maxHp, hp);
+        float moveSpeed = float.Parse(moveSpeedInput.text);
+        PlayerData playerData = new PlayerData(playerName, maxHp, hp, moveSpeed);
         SaveSystem.SavePlayer(playerData);
         SceneManager.LoadScene("Level1");
     }
 
+    public void LoadPlayerData() {
+        PlayerData playerData = SaveSystem.LoadPlayer();
+        nameInput.text = playerData.playerName;
+        maxHpInput.text = Convert.ToString(playerData.maxHp);
+        hpInput.text = Convert.ToString(playerData.hp);
+        moveSpeedInput.text = Convert.ToString(playerData.moveSpeed);
+    }
 }

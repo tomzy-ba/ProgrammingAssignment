@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MenuUI : MonoBehaviour
 {
     public Slider sensSlider;
-    public InputField nameInput;
+    public Text playerNameText;
 
     public Text level1Time;
     public Text level2Time;
@@ -18,10 +18,12 @@ public class MenuUI : MonoBehaviour
     {
         string path = Application.persistentDataPath + "/player.hello";
         if (!File.Exists(path)) {
-            SceneManager.LoadScene("CharacterCreation");
+            SceneManager.LoadScene("PlayerCreation");
         }
         LoadSettings();
         
+        PlayerData playerData = SaveSystem.LoadPlayer();
+        playerNameText.text = playerData.playerName;
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class MenuUI : MonoBehaviour
     }
 
     public void OnCharacterCreateButton() {
-        SceneManager.LoadScene("CharacterCreation");
+        SceneManager.LoadScene("PlayerCreation");
     }
 
     public void OnLevel1Button()
@@ -64,7 +66,6 @@ public class MenuUI : MonoBehaviour
     {
         // converts the sensitivity
         PlayerPrefs.SetFloat("Sensitivity", sensSlider.value);
-        string playerName = nameInput.text;
         // PlayerPrefs.SetString("PlayerName", playerName);
     }
 
@@ -72,7 +73,6 @@ public class MenuUI : MonoBehaviour
     {
         // gets playerprefs sensitivity value and assigns it to the slider
         sensSlider.value = PlayerPrefs.GetFloat("Sensitivity", 0);
-        nameInput.text = PlayerPrefs.GetString("PlayerName", "");
 
         // gets the playerprefs player name value and level 1 time value and combines them into a string, then assigns to level1timetext
         level1Time.text = PlayerPrefs.GetString("Level1Player", "not completed") + " " + PlayerPrefs.GetFloat("Level1Time");

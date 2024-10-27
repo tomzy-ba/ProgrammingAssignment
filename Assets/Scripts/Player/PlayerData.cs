@@ -8,10 +8,12 @@ public class PlayerData
     public int hp;
     public float moveSpeed;
 
-    public PlayerData(string playerName, int maxHp, int hp)
+
+    public PlayerData(string playerName, int maxHp, int hp, float moveSpeed)
     {
         this.playerName = playerName;
         this.maxHp = maxHp;
         this.hp = hp;
+        this.moveSpeed = moveSpeed;
     }
 }

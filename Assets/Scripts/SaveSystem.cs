@@ -8,7 +8,10 @@ public static class SaveSystem
     {
         BinaryFormatter bf = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.hello";
-        FileStream stream = new FileStream(path, FileMode.Create);
+        if (File.Exists(path)) {
+            File.Delete(path);
+        }
+        FileStream stream = new FileStream(path, FileMode.CreateNew);
 
         PlayerData data = playerData;
 
@@ -27,6 +30,7 @@ public static class SaveSystem
 
             PlayerData data = bf.Deserialize(stream) as PlayerData;
 
+            stream.Close();
             return data;
         }
         else
