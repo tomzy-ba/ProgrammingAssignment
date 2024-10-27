@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+    // decides how fast the player moves
     private float moveSpeed;
-    private float oldSpeed;
     public float gameTimer;
 
     private bool isJumpPressed;
@@ -77,51 +77,55 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log( "Collision tag" + collision.gameObject.tag);
         //Debug.Log("Collision name" + collision.gameObject.name);
-        if(collision.gameObject.CompareTag("Ground"))
+        GameObject cGO = collision.gameObject;
+        switch (cGO.name)
+        {
+            case "Lava":
+                Debug.Log("LAVA");
+                player.TakeDamage(1000);
+                break;
+            case "EndCylinder1":
+                // end level 1
+                if (gameTimer < PlayerPrefs.GetFloat("Level1Time"))
+                {
+                    PlayerPrefs.SetString("Level1Player", player.GetName());
+                    PlayerPrefs.SetFloat("Level1Time", gameTimer);
+                }
+                SceneManager.LoadScene("MainMenu");
+                break;
+            case "EndCylinder2":
+                if (gameTimer < PlayerPrefs.GetFloat("Level2Time"))
+                {
+                    PlayerPrefs.SetString("Level2Player", player.GetName());
+                    PlayerPrefs.SetFloat("Level2Time", gameTimer);
+                }
+                SceneManager.LoadScene("MainMenu");
+                break;
+            case "EndCylinder3":
+                if (gameTimer < PlayerPrefs.GetFloat("Level3Time"))
+                {
+                    PlayerPrefs.SetString("Level3Player", player.GetName());
+                    PlayerPrefs.SetFloat("Level3Time", gameTimer);
+                }
+                SceneManager.LoadScene("MainMenu");
+                break;
+        }
+        if (cGO.CompareTag("Ground"))
         {
             Debug.Log("Grounded");
             grounded = true;
             jumpTicks = 0;
         }
-        else if (collision.gameObject.name == "Lava")
-        {
-            Debug.Log("LAVA");
-            player.TakeDamage(1000);
-        }
-        else if (collision.gameObject.CompareTag("Bullet"))
+        else if (cGO.CompareTag("Bullet"))
         {
             Debug.Log("Took a bullet");
             player.TakeDamage(10);
-            Destroy(collision.gameObject);
-        }
-        else if (collision.gameObject.name == "EndCylinder1")
+            Destroy(cGO);
+        } else
         {
-            // end level 1
-            if (gameTimer < PlayerPrefs.GetFloat("Level1Time"))
-            {
-                PlayerPrefs.SetString("Level1Player", player.GetName());
-                PlayerPrefs.SetFloat("Level1Time", gameTimer);
-            }
-            SceneManager.LoadScene("MainMenu");
-        }
-        else if (collision.gameObject.name == "EndCylinder2")
-        {
-            if (gameTimer < PlayerPrefs.GetFloat("Level2Time"))
-            {
-                PlayerPrefs.SetString("Level2Player", player.GetName());
-                PlayerPrefs.SetFloat("Level2Time", gameTimer);
-            }
-            SceneManager.LoadScene("MainMenu");
-        }
-        else if (collision.gameObject.name == "EndCylinder3")
-        {
-            if (gameTimer < PlayerPrefs.GetFloat("Level3Time"))
-            {
-                PlayerPrefs.SetString("Level3Player", player.GetName());
-                PlayerPrefs.SetFloat("Level3Time", gameTimer);
-            }
-            SceneManager.LoadScene("MainMenu");
+            Debug.Log("Other tag");
         }
     }
+
 
 }

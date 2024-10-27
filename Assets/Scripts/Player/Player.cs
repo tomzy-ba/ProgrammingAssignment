@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
     private float jumpForce;
 
 
+    public void MultiSpeed(float multi)
+    {
+        moveSpeed *= multi;
+    }
     public void SetName(string name)
     {
         playerName = name;
@@ -35,10 +39,20 @@ public class Player : MonoBehaviour
     {
         hp = newHp;
     }
+    public void SetMaxHp(int newMaxHp)
+    {
+        maxHp = newMaxHp;
+    }
+
+    public void SetMoveSpeed(float newMoveSpeed)
+    {
+        moveSpeed = newMoveSpeed;
+    }
 
     public bool TakeDamage(int damage)
     {
         Debug.Log("Player takes " + damage + "damage");
+        // same as hp = hp - damage
         hp -= damage;
         if (hp <= 0)
         {
@@ -71,5 +85,19 @@ public class Player : MonoBehaviour
     public float GetJumpForce()
     {
         return jumpForce;
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        this.SetName(playerName);
+        this.SetMaxHp(data.maxHp);
+        this.SetHp(data.hp);
+        this.SetMoveSpeed(data.moveSpeed);
     }
 }

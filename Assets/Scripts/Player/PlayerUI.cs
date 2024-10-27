@@ -10,12 +10,6 @@ public class PlayerUI : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject bloodSplatter;
 
-    private void Start()
-    {
-    }
-    private void Update()
-    {
-    }
     public void UpdateUI(Player player)
     {
         if (hpSlider.value > player.GetHp())
