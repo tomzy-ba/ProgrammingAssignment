@@ -6,6 +6,9 @@ public static class SaveSystem
 {
     public static void SavePlayer (PlayerData playerData)
     {
+        bool error = InputValidator(playerData);
+        if (error) return;
+
         BinaryFormatter bf = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.hello";
         if (File.Exists(path)) {
@@ -13,9 +16,9 @@ public static class SaveSystem
         }
         FileStream stream = new FileStream(path, FileMode.CreateNew);
 
-        PlayerData data = playerData;
+        Debug.Log("Created player: \nPlayer name: " + playerData.playerName + "\nPlayer max hp: " + playerData.maxHp + "\nPlayer hp: " + playerData.hp + "\nPlayer movespeed" + playerData.moveSpeed);
 
-        bf.Serialize(stream, data);
+        bf.Serialize(stream, playerData);
         stream.Close();
         Debug.Log("PLAYER SAVED");
     }
@@ -38,5 +41,16 @@ public static class SaveSystem
             Debug.LogError("Save file not found in" + path);
             return null;
         }
+    }
+
+    static bool InputValidator(PlayerData playerData) {
+
+        if (playerData.maxHp <= 0 || playerData.hp <= 0 || playerData.moveSpeed <= 0) {
+            Debug.LogError("invalid values");
+            return true;
+        } else if (playerData.playerName.Length < 4) {
+            Debug.LogError("name not long enough");
+        }
+        return false;
     }
 }

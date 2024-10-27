@@ -56,16 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(isJumpPressed && grounded)
         {
-            if (jumpTicks > 500)
-            {
-                grounded = false;
-                jumpTicks = 0;
-                return;
-            }
-            Debug.Log("JUMP");
-            rb.linearVelocity = Vector3.up * player.GetJumpForce();
-            //rb.AddForce(Vector3.up * 20000);
-            jumpTicks += 1;
+            Jump();
         }
         if (isSprinting)
         {
@@ -75,6 +66,18 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = player.GetMoveSpeed();
         }
+    }
+    private void Jump() {
+        if (jumpTicks > 500)
+            {
+                grounded = false;
+                jumpTicks = 0;
+                return;
+            }
+        Debug.Log("JUMP");
+        rb.linearVelocity = Vector3.up * player.GetJumpForce();
+        //rb.AddForce(Vector3.up * 20000);
+        jumpTicks += 1;
     }
 
     private void OnCollisionEnter(Collision collision)

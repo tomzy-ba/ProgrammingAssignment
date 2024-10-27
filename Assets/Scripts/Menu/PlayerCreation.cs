@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public class PlayerCreation : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // TestSaveDataWithNegativeHealth();
+        // TestSaveDataWithNegativeSpeed();
         LoadPlayerData();
     }
 
@@ -25,7 +28,7 @@ public class PlayerCreation : MonoBehaviour
         float moveSpeed = float.Parse(moveSpeedInput.text);
         PlayerData playerData = new PlayerData(playerName, maxHp, hp, moveSpeed);
         SaveSystem.SavePlayer(playerData);
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void LoadPlayerData() {
@@ -34,5 +37,18 @@ public class PlayerCreation : MonoBehaviour
         maxHpInput.text = Convert.ToString(playerData.maxHp);
         hpInput.text = Convert.ToString(playerData.hp);
         moveSpeedInput.text = Convert.ToString(playerData.moveSpeed);
+    }
+
+
+    // unit testing
+    public void TestSaveDataWithNegativeHealth() {
+        PlayerData playerData = new PlayerData("tom", -100, -100, 15);
+
+        SaveSystem.SavePlayer(playerData);
+    }
+    public void TestSaveDataWithNegativeSpeed() {
+        PlayerData playerData = new PlayerData("tom", 100, 100, -10f);
+
+        SaveSystem.SavePlayer(playerData);
     }
 }
