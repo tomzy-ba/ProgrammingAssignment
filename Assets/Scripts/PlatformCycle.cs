@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class InvisiblePath : MonoBehaviour
+public class PlatformCycler : MonoBehaviour
 {
     private bool activated = true;
     private int platformIndex = 0;
@@ -25,9 +25,13 @@ public class InvisiblePath : MonoBehaviour
     {
         while (activated)
         {
-            Debug.Log("deactivate platform " +  platformIndex);
+            Debug.Log("activate platform " + platformIndex);
+            MeshRenderer mr = platforms[platformIndex].GetComponent<MeshRenderer>();
+            mr.material.SetColor("_BaseColor", Color.white);
             platforms[platformIndex].SetActive(true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
+            mr.material.SetColor("_BaseColor", Color.red);
+            yield return new WaitForSeconds(.5f);
             platforms[platformIndex].SetActive(false);
             platformIndex++;
             if (platformIndex >= platforms.Count)

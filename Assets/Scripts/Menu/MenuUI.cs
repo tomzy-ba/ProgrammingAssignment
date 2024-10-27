@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,10 @@ public class MenuUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        string path = Application.persistentDataPath + "/player.hello";
+        if (!File.Exists(path)) {
+            SceneManager.LoadScene("CharacterCreation");
+        }
         LoadSettings();
         
     }
@@ -23,6 +28,10 @@ public class MenuUI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnCharacterCreateButton() {
+        SceneManager.LoadScene("CharacterCreation");
     }
 
     public void OnLevel1Button()
@@ -45,13 +54,18 @@ public class MenuUI : MonoBehaviour
         SaveSettings();
         SceneManager.LoadScene("Level4");
     }
+    public void OnLevel5Button()
+    {
+        SaveSettings();
+        SceneManager.LoadScene("Level5");
+    }
 
     void SaveSettings()
     {
         // converts the sensitivity
         PlayerPrefs.SetFloat("Sensitivity", sensSlider.value);
         string playerName = nameInput.text;
-        PlayerPrefs.SetString("PlayerName", playerName);
+        // PlayerPrefs.SetString("PlayerName", playerName);
     }
 
     void LoadSettings()

@@ -27,9 +27,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
+        PlayerData playerData = SaveSystem.LoadPlayer();
+        player.SetName(playerData.playerName);
+        player.SetMaxHp(playerData.maxHp);
+        player.SetHp(playerData.hp);
         playerUI = playerUIGO.GetComponent<PlayerUI>();
 
-        player.SetName(PlayerPrefs.GetString("PlayerName"));
         moveSpeed = player.GetMoveSpeed();
     }
 

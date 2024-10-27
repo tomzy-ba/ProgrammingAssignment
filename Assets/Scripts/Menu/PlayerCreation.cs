@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerCreation : MonoBehaviour
@@ -15,18 +17,14 @@ public class PlayerCreation : MonoBehaviour
         
     }
 
-    public void CreatePlayer()
+    public void SavePlayerData()
     {
-        Player player = new Player();
-        string name = nameInput.text;
+        string playerName = nameInput.text;
         int maxHp = Convert.ToInt32(maxHpInput.text);
         int hp = Convert.ToInt32(hpInput.text);
-        float moveSpeed = (float) Convert.ToDouble(moveSpeedInput.text);
-        player.SetName(name);
-        player.SetMaxHp(maxHp);
-        player.SetHp(hp);
-        player.SetMoveSpeed(moveSpeed);
-        SaveSystem.SavePlayer(player);
+        PlayerData playerData = new PlayerData(playerName, maxHp, hp);
+        SaveSystem.SavePlayer(playerData);
+        SceneManager.LoadScene("Level1");
     }
 
 }

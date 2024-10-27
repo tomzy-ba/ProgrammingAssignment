@@ -4,13 +4,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SavePlayer (Player player)
+    public static void SavePlayer (PlayerData playerData)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.fun";
+        string path = Application.persistentDataPath + "/player.hello";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(player);
+        PlayerData data = playerData;
 
         bf.Serialize(stream, data);
         stream.Close();
@@ -19,7 +19,7 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "/player.fun";
+        string path = Application.persistentDataPath + "/player.hello";
         if (File.Exists(path))
         {
             BinaryFormatter bf = new BinaryFormatter();

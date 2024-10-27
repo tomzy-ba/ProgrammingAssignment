@@ -8,11 +8,10 @@ public class PlayerData
     public int hp;
     public float moveSpeed;
 
-    public PlayerData(Player player)
+    public PlayerData(string playerName, int maxHp, int hp)
     {
-        playerName = player.GetName();
-        maxHp = player.GetMaxHp();
-        hp = player.GetHp();
-        moveSpeed = player.GetMoveSpeed();
+        this.playerName = playerName;
+        this.maxHp = maxHp;
+        this.hp = hp;
     }
 }

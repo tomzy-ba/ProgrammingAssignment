@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 581944913}
   - component: {fileID: 581944912}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: CreatePlayerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +600,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1515561092}
         m_TargetAssemblyTypeName: PlayerCreation, Assembly-CSharp
-        m_MethodName: CreatePlayer
+        m_MethodName: SavePlayerData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1348,7 +1348,6 @@ GameObject:
   - component: {fileID: 1515561089}
   - component: {fileID: 1515561088}
   - component: {fileID: 1515561092}
-  - component: {fileID: 1515561093}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1460,22 +1459,6 @@ MonoBehaviour:
   maxHpInput: {fileID: 738359687}
   hpInput: {fileID: 1749337578}
   moveSpeedInput: {fileID: 790780911}
---- !u!114 &1515561093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515561087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b52b2cac1174b647bfe6eeb1aae6933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 0
-  hp: 0
-  moveSpeed: 0
-  jumpForce: 0
 --- !u!1 &1749337576
 GameObject:
   m_ObjectHideFlags: 0

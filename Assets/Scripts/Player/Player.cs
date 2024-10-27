@@ -86,18 +86,4 @@ public class Player : MonoBehaviour
     {
         return jumpForce;
     }
-
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(this);
-    }
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        this.SetName(playerName);
-        this.SetMaxHp(data.maxHp);
-        this.SetHp(data.hp);
-        this.SetMoveSpeed(data.moveSpeed);
-    }
 }
