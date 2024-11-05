@@ -63,12 +63,19 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isSprinting)
         {
-            moveSpeed = player.GetMoveSpeed() * 1.75f;
+            Sprint();
         }
         else
         {
-            moveSpeed = player.GetMoveSpeed();
+            Walk();
         }
+    }
+
+    private void Sprint() {
+        moveSpeed = player.GetMoveSpeed() * 1.75f;
+    }
+    private void Walk() {
+        moveSpeed = player.GetMoveSpeed();
     }
     private void Jump() {
         Debug.Log("jump method called");
