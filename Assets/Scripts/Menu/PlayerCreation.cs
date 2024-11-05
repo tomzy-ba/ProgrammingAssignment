@@ -51,4 +51,9 @@ public class PlayerCreation : MonoBehaviour
 
         SaveSystem.SavePlayer(playerData);
     }
+    public void TestSaveDataWithInvalidString() {
+        PlayerData playerData = new PlayerData("", 100, 100, 15);
+
+        SaveSystem.SavePlayer(playerData);
+    }
 }

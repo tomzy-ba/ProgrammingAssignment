@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float gameTimer;
 
     private bool isJumpPressed;
+    private bool isJumpAllowed;
     private bool isSprinting;
     private bool grounded;
     private int jumpTicks;
@@ -54,9 +55,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDirection = orientation.forward * vertical + orientation.right * horizontal;
         rb.linearVelocity = moveDirection * moveSpeed;
 
-        if(isJumpPressed && grounded)
+        if(isJumpPressed && isJumpAllowed)
         {
             Jump();
+        } else if (!isJumpPressed && !grounded) {
+            isJumpAllowed = false;
         }
         if (isSprinting)
         {
@@ -68,9 +71,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private void Jump() {
+        Debug.Log("jump method called");
         if (jumpTicks > 500)
             {
-                grounded = false;
+                isJumpAllowed = false;  
+                // grounded = false;
                 jumpTicks = 0;
                 return;
             }
@@ -120,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
         if (cGO.CompareTag("Ground"))
         {
             Debug.Log("Grounded");
+            isJumpAllowed = true;
             grounded = true;
             jumpTicks = 0;
         }
@@ -134,5 +140,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit(Collision collision) {
+        if (collision.gameObject.CompareTag("Ground")) {
+            Debug.Log("Exited ground collision");
+            grounded = false;
+        }
+    }
 
 }
