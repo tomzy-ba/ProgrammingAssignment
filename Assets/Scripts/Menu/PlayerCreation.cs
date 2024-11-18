@@ -20,7 +20,7 @@ public class PlayerCreation : MonoBehaviour
     {
         hello = "HUH";
         Debug.Log("hello");
-        // TestSaveDataWithNegativeSpeed();
+        TestSaveDataWithNegativeSpeed();
         LoadPlayerData();
     }
 
@@ -51,6 +51,7 @@ public class PlayerCreation : MonoBehaviour
         SaveSystem.SavePlayer(playerData);
     }
     public void TestSaveDataWithNegativeSpeed() {
+        Debug.Log("HELLO");
         PlayerData playerData = new PlayerData("tom", 100, 100, -10f);
 
         SaveSystem.SavePlayer(playerData);
