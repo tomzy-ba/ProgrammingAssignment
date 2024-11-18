@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
@@ -12,10 +13,13 @@ public class PlayerCreation : MonoBehaviour
     public InputField hpInput;
     public InputField moveSpeedInput;
 
+    private string hello = "bruh";
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // TestSaveDataWithNegativeHealth();
+        hello = "HUH";
+        Debug.Log("hello");
         // TestSaveDataWithNegativeSpeed();
         LoadPlayerData();
     }
@@ -43,7 +47,7 @@ public class PlayerCreation : MonoBehaviour
     // unit testing
     public void TestSaveDataWithNegativeHealth() {
         PlayerData playerData = new PlayerData("tom", -100, -100, 15);
-
+        Debug.Log("hello");
         SaveSystem.SavePlayer(playerData);
     }
     public void TestSaveDataWithNegativeSpeed() {

@@ -31,7 +31,7 @@ public class PlatformCycler : MonoBehaviour
             platforms[platformIndex].SetActive(true);
             yield return new WaitForSeconds(1f);
             mr.material.SetColor("_BaseColor", Color.red);
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(1f);
             platforms[platformIndex].SetActive(false);
             platformIndex++;
             if (platformIndex >= platforms.Count)
